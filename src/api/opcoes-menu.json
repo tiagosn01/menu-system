@@ -1,0 +1,21 @@
+{
+  "menus": 
+  [
+    {
+      "id": 1,
+      "name": "Brinquedos"
+    },
+    {
+      "id": 2,
+      "name": "Eletronicos"
+    },
+    {
+      "id": 3,
+      "name": "Eletrodomésticos"
+    },
+    {
+      "id": 3,
+      "name": "Móveis"
+    }
+  ]
+}

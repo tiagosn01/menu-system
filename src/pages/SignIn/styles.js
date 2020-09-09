@@ -37,7 +37,7 @@ export const Container = styled.div`
   }
 
   > a {
-    color: #001b48;
+    color: #323030;
     display: flex;
     margin-top: 24px;
     transition: color 0.2s;
@@ -50,7 +50,7 @@ export const Container = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.3, '#001b48')};
+      color: ${shade(0.3, '#323030')};
     }
   }
 `;

@@ -15,8 +15,8 @@ import { Container, Title } from './styles';
 
 const SignIn = () => {
   const formRef = useRef();
-  const cpf_cnpjInputRef = useRef();
-  const passwordInputRef = useRef();
+  const emailInputRef = useRef();
+  const nameInputRef = useRef();
 
   const history = useHistory();
 
@@ -27,8 +27,8 @@ const SignIn = () => {
     async data => {
       try {
         const schema = Yup.object().shape({
-          cpf_cnpj: Yup.string().required('Campo obrigatório'),
-          password: Yup.string().required('Senha obrigatória.'),
+          email: Yup.string().required('Campo obrigatório'),
+          name: Yup.string().required('Senha obrigatória.'),
         });
 
         await schema.validate(data, {
@@ -36,8 +36,8 @@ const SignIn = () => {
         });
 
         await signIn({
-          cpf_cnpj: data.cpf_cnpj,
-          password: data.password,
+          email: data.email,
+          name: data.name,
         });
 
         history.push('/dashboard');
@@ -63,17 +63,12 @@ const SignIn = () => {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Acesso ao sistema</h1>
 
+        <Input name="name" type="text" placeholder="Nome" ref={emailInputRef} />
         <Input
-          name="cpf_cnpj"
-          type="text"
-          placeholder="CPF/CNPJ"
-          ref={cpf_cnpjInputRef}
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Senha"
-          ref={passwordInputRef}
+          name="email"
+          type="email"
+          placeholder="Email"
+          ref={nameInputRef}
         />
 
         <Button type="submit">Entrar</Button>
@@ -81,14 +76,9 @@ const SignIn = () => {
         <Link to="/signup">Esqueci a senha</Link>
       </Form>
 
-      <Link to="/select-type">
-        <FiLogIn />
-        Cadastre-se
-      </Link>
-
       <Link to="/signup">
         <FiLogIn />
-        Telas cadastro final [TESTE]
+        Cadastre-se
       </Link>
     </Container>
   );

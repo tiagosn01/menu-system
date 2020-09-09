@@ -7,7 +7,7 @@ export const Container = styled.button`
   border: none;
 
   width: 100%;
-  height: 50px;
+  height: 60px;
   color: #fff;
   font-weight: 500;
   margin-top: 16px;
@@ -15,6 +15,6 @@ export const Container = styled.button`
   text-align: center;
 
   &:hover {
-    background: ${shade(0.3, '#001b48')};
+    background: ${shade(0.3, '#323030')};
   }
 `;

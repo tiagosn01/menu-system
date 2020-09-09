@@ -5,12 +5,12 @@ export default createGlobalStyle`
   :root {
 
     font-size: 60%;
-    --color-background: linear-gradient(-90deg, #02457A, #97CADB);
+    --color-background: linear-gradient(-90deg, #232C21, #A6A69B);
     --color-primary-lighter: #D6E8EE;
     --color-primary-light: #97CADB;
     --color-primary: #018ABE;
     --color-primary-dark: #02457A;
-    --color-primary-darker: #001b48;
+    --color-primary-darker: #323030;
     --color-secundary: #54c0cc;
     --color-secundary-dark: #1f4f59;
     --color-title-in-primary: #FFFFFF;
@@ -39,13 +39,22 @@ export default createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(-90deg, #02457A, #97CADB);
+    background: linear-gradient(-90deg, #232C21, #A6A69B);
     -webkit-font-smoothing: antialiased; 
   }
 
   body, input, button {
     font-family: 'Roboto Slab', serif;
     font-size: 16px;    
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #DDDED8
   }
 
   h1, h2, h3, h4, h5, strong {
@@ -55,5 +64,9 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  *, :after, :before {
+    box-sizing: border-box;
+}
   
 `;
