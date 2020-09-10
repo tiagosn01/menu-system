@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useAuth } from '../../hooks/auth';
+
+import seta from '../../assets/seta.png';
 
 import {
   Container,
@@ -10,10 +12,14 @@ import {
   SidebarNav,
   Wrapper,
   LogoDiv,
+  DivSubmenuUser,
+  DivSumenu,
+  LiItem,
 } from './styles';
 
 const Dashboard = () => {
   const { signOut } = useAuth();
+  const [open, setOpen] = useState(false);
 
   return (
     <Container>
@@ -24,17 +30,25 @@ const Dashboard = () => {
 
         <Wrapper>
           <SidebarUser>
-            <a href="User">
+            <a href="javascript://" onClick={() => setOpen(!open)}>
               <img
                 src="https://api.adorable.io/avatars/50/abott@adorable.png"
                 alt="avatar"
               />
-              <span>
-                Tiago Silva
-                <b />
-              </span>
+              <span>Tiago Silva</span>
+
+              <img
+                src={seta}
+                alt="seta-branca"
+                style={{
+                  width: 8,
+                  height: 4,
+                  borderRadius: 0,
+                  marginLeft: 65,
+                }}
+              />
             </a>
-            <div drop="false">
+            <DivSubmenuUser>
               <ul>
                 <li>
                   <a href="My Profile">My Profile</a>
@@ -46,16 +60,20 @@ const Dashboard = () => {
                   <a href="Settings">Settings</a>
                 </li>
               </ul>
-            </div>
+            </DivSubmenuUser>
           </SidebarUser>
 
           <SidebarNav>
             <li>
               <a href="/dashboard">Dashboard</a>
             </li>
-            <li>
-              <a href="Teste">Pages</a>
-              <div>
+            <LiItem>
+              <a href="javascript://">
+                Pages
+                <img src={seta} alt="seta-branca" />
+              </a>
+
+              <DivSumenu>
                 <ul>
                   <li>
                     <a href="TimeLine">
@@ -73,11 +91,15 @@ const Dashboard = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
-            </li>
-            <li>
-              <a href="/Component">Components</a>
-              <div>
+              </DivSumenu>
+            </LiItem>
+            <LiItem>
+              <a href="javascript://">
+                Components
+                <img src={seta} alt="seta-branca" />
+              </a>
+
+              <DivSumenu>
                 <ul>
                   <li>
                     <a href="Button">
@@ -100,11 +122,14 @@ const Dashboard = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
-            </li>
-            <li>
-              <a href="/Forms">Forms</a>
-              <div>
+              </DivSumenu>
+            </LiItem>
+            <LiItem>
+              <a href="javascript://">
+                Forms
+                <img src={seta} alt="seta-branca" />
+              </a>
+              <DivSumenu>
                 <ul>
                   <li>
                     <a href="Regular Forms">
@@ -122,11 +147,14 @@ const Dashboard = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
-            </li>
-            <li>
-              <a href="/Tables">Tables</a>
-              <div>
+              </DivSumenu>
+            </LiItem>
+            <LiItem>
+              <a href="javascript://">
+                Tables
+                <img src={seta} alt="seta-branca" />
+              </a>
+              <DivSumenu>
                 <ul>
                   <li>
                     <a href="Regular Tables">
@@ -144,11 +172,14 @@ const Dashboard = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
-            </li>
-            <li>
-              <a href="/dashboard">Maps</a>
-              <div>
+              </DivSumenu>
+            </LiItem>
+            <LiItem>
+              <a href="javascript://">
+                Maps
+                <img src={seta} alt="seta-branca" />
+              </a>
+              <DivSumenu>
                 <ul>
                   <li>
                     <a href="Google Maps">
@@ -166,8 +197,8 @@ const Dashboard = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
-            </li>
+              </DivSumenu>
+            </LiItem>
           </SidebarNav>
         </Wrapper>
       </Sidebar>

@@ -7,7 +7,7 @@ export const Container = styled.div`
   background: #efefe7;
 `;
 export const Sidebar = styled.div`
-  display: block;
+  display: absolute;
   height: 100%;
   width: 20.8%;
   background: linear-gradient(-0deg, #000, #656258);
@@ -31,6 +31,13 @@ export const LogoDiv = styled.div`
   }
 `;
 export const Wrapper = styled.div``;
+
+export const DivSubmenuUser = styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+`;
 
 export const SidebarUser = styled.div`
   padding: 2rem 2rem;
@@ -59,11 +66,9 @@ export const SidebarUser = styled.div`
     }
   }
 
-  div {
+  &:hover ${DivSubmenuUser} {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
+    color: #999;
   }
 
   &:after {
@@ -77,29 +82,51 @@ export const SidebarUser = styled.div`
   }
 `;
 
+export const DivSumenu = styled.div`
+  display: none;
+`;
+
 export const SidebarNav = styled.ul`
+  display: block;
   margin-top: 2rem;
   flex-wrap: wrap;
+  position: relative;
 
   margin-left: 2.5rem;
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     width: 100%;
     line-height: 5.5rem;
     box-sizing: border-box;
     transition: 0.3s;
     margin-left: 0.8rem;
+    transition: 0.2s;
+
+    img {
+      margin-right: 4rem;
+      width: 0.8rem;
+      height: 0.4rem;
+    }
 
     span {
-      display: none;
       font-size: 10px;
-      line-height: 2rem;
+      line-height: 3rem;
     }
 
     &:hover {
       color: #999;
     }
+  }
+`;
+
+export const LiItem = styled.li`
+  transition: display 3s;
+  &:hover ${DivSumenu} {
+    display: block;
   }
 `;
 
