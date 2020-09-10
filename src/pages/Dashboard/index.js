@@ -25,12 +25,16 @@ const Dashboard = () => {
         <Wrapper>
           <SidebarUser>
             <a href="User">
+              <img
+                src="https://api.adorable.io/avatars/50/abott@adorable.png"
+                alt="avatar"
+              />
               <span>
                 Tiago Silva
                 <b />
               </span>
             </a>
-            <div>
+            <div drop="false">
               <ul>
                 <li>
                   <a href="My Profile">My Profile</a>
