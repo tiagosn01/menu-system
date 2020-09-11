@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 
 import seta from '../../assets/seta.png';
+import menu from '../../api/opcoes-menu.json';
+import user from '../../api/user.json';
 
 import {
   Container,
@@ -19,7 +21,12 @@ import {
 
 const Dashboard = () => {
   const { signOut } = useAuth();
-  const [open, setOpen] = useState(false);
+  const [menuUser, setMenuUser] = useState(false);
+  const [pages, setPages] = useState(false);
+  const [components, setComponents] = useState(false);
+  const [forms, setForms] = useState(false);
+  const [tables, setTables] = useState(false);
+  const [maps, setMaps] = useState(false);
 
   return (
     <Container>
@@ -29,13 +36,15 @@ const Dashboard = () => {
         </LogoDiv>
 
         <Wrapper>
-          <SidebarUser>
-            <a href="javascript://" onClick={() => setOpen(!open)}>
-              <img
-                src="https://api.adorable.io/avatars/50/abott@adorable.png"
-                alt="avatar"
-              />
-              <span>Tiago Silva</span>
+          <SidebarUser isOpen={menuUser} onClick={() => setMenuUser(!menuUser)}>
+            <a href="#">
+              <div>
+                <img
+                  src="https://api.adorable.io/avatars/50/abott@adorable.png"
+                  alt="avatar"
+                />
+                <span>{user.user.name}</span>
+              </div>
 
               <img
                 src={seta}
@@ -67,8 +76,8 @@ const Dashboard = () => {
             <li>
               <a href="/dashboard">Dashboard</a>
             </li>
-            <LiItem>
-              <a href="javascript://">
+            <LiItem isOpen={pages} onClick={() => setPages(!pages)}>
+              <a href="#">
                 Pages
                 <img src={seta} alt="seta-branca" />
               </a>
@@ -93,8 +102,11 @@ const Dashboard = () => {
                 </ul>
               </DivSumenu>
             </LiItem>
-            <LiItem>
-              <a href="javascript://">
+            <LiItem
+              isOpen={components}
+              onClick={() => setComponents(!components)}
+            >
+              <a href="#">
                 Components
                 <img src={seta} alt="seta-branca" />
               </a>
@@ -124,8 +136,8 @@ const Dashboard = () => {
                 </ul>
               </DivSumenu>
             </LiItem>
-            <LiItem>
-              <a href="javascript://">
+            <LiItem isOpen={forms} onClick={() => setForms(!forms)}>
+              <a href="#">
                 Forms
                 <img src={seta} alt="seta-branca" />
               </a>
@@ -149,8 +161,8 @@ const Dashboard = () => {
                 </ul>
               </DivSumenu>
             </LiItem>
-            <LiItem>
-              <a href="javascript://">
+            <LiItem isOpen={tables} onClick={() => setTables(!tables)}>
+              <a href="#">
                 Tables
                 <img src={seta} alt="seta-branca" />
               </a>
@@ -174,8 +186,8 @@ const Dashboard = () => {
                 </ul>
               </DivSumenu>
             </LiItem>
-            <LiItem>
-              <a href="javascript://">
+            <LiItem isOpen={maps} onClick={() => setMaps(!maps)}>
+              <a href="#">
                 Maps
                 <img src={seta} alt="seta-branca" />
               </a>

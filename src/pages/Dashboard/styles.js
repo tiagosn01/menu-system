@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -37,6 +37,12 @@ export const DivSubmenuUser = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1;
+  margin-left: 2rem;
+  margin-top: 1rem;
+
+  font-size: 1rem;
+  line-height: 3.8rem;
+  transition: 0.3s;
 `;
 
 export const SidebarUser = styled.div`
@@ -52,24 +58,38 @@ export const SidebarUser = styled.div`
   a {
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
-    line-height: 3.8rem;
-    transition: 0.3s;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    > img {
+      margin-right: 0.8rem;
+      width: 0.8rem;
+      height: 0.5rem;
+    }
 
     &:hover {
-      color: #999;
+      color: #888;
     }
 
     span {
-      margin-left: 1rem;
-      font-size: 1.5rem;
+      margin-left: 2rem;
+      font-size: 1.3rem;
+      font-weight: bold;
     }
   }
 
-  &:hover ${DivSubmenuUser} {
-    display: flex;
-    color: #999;
-  }
+  ${props =>
+    props.isOpen &&
+    css`
+      ${DivSubmenuUser} {
+        display: block;
+      }
+    `}
 
   &:after {
     content: '';
@@ -88,10 +108,9 @@ export const DivSumenu = styled.div`
 
 export const SidebarNav = styled.ul`
   display: block;
-  margin-top: 2rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
-  position: relative;
-
+  padding: 1rem;
   margin-left: 2.5rem;
 
   a {
@@ -101,33 +120,34 @@ export const SidebarNav = styled.ul`
 
     width: 100%;
     line-height: 5.5rem;
-    box-sizing: border-box;
+
     transition: 0.3s;
-    margin-left: 0.8rem;
-    transition: 0.2s;
 
     img {
-      margin-right: 4rem;
+      margin-right: 2rem;
       width: 0.8rem;
-      height: 0.4rem;
+      height: 0.5rem;
     }
 
     span {
-      font-size: 10px;
-      line-height: 3rem;
+      font-size: 1rem;
+      line-height: 3.6rem;
     }
 
     &:hover {
-      color: #999;
+      color: #555;
     }
   }
 `;
 
 export const LiItem = styled.li`
-  transition: display 3s;
-  &:hover ${DivSumenu} {
-    display: block;
-  }
+  ${props =>
+    props.isOpen &&
+    css`
+      ${DivSumenu} {
+        display: block;
+      }
+    `}
 `;
 
 export const Main = styled.div`
