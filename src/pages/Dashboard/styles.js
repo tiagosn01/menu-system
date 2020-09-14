@@ -77,7 +77,7 @@ export const SidebarUser = styled.div`
     }
 
     span {
-      margin-left: 2rem;
+      margin-left: 1.2rem;
       font-size: 1.3rem;
       font-weight: bold;
     }
@@ -149,6 +149,8 @@ export const LiItem = styled.li`
       }
     `}
 `;
+
+export const LiSubmenu = styled.li``;
 
 export const Main = styled.div`
   display: flex;

@@ -5,7 +5,6 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
 
 import User from '../api/user.json';
 
@@ -80,7 +79,3 @@ export function useAuth() {
   }
   return context;
 }
-
-AuthProvider.propTypes = {
-  children: PropTypes.string.isRequired,
-};

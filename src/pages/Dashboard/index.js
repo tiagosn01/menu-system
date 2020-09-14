@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 
 import { useAuth } from '../../hooks/auth';
 
 import seta from '../../assets/seta.png';
 import menu from '../../api/opcoes-menu.json';
+import submenu from '../../api/submenus.json';
 import user from '../../api/user.json';
 
 import {
@@ -17,16 +19,22 @@ import {
   DivSubmenuUser,
   DivSumenu,
   LiItem,
+  LiSubmenu,
 } from './styles';
 
 const Dashboard = () => {
   const { signOut } = useAuth();
   const [menuUser, setMenuUser] = useState(false);
-  const [pages, setPages] = useState(false);
-  const [components, setComponents] = useState(false);
-  const [forms, setForms] = useState(false);
-  const [tables, setTables] = useState(false);
-  const [maps, setMaps] = useState(false);
+  const [itensMenu, setItensMenu] = useState([
+    { id: 0, drop: false },
+    { id: 1, drop: false },
+    { id: 2, drop: false },
+    { id: 3, drop: false },
+    { id: 4, drop: false },
+    { id: 5, drop: false },
+    { id: 6, drop: false },
+    { id: 7, drop: false },
+  ]);
 
   return (
     <Container>
@@ -76,141 +84,46 @@ const Dashboard = () => {
             <li>
               <a href="/dashboard">Dashboard</a>
             </li>
-            <LiItem isOpen={pages} onClick={() => setPages(!pages)}>
-              <a href="#">
-                Pages
-                <img src={seta} alt="seta-branca" />
-              </a>
 
-              <DivSumenu>
-                <ul>
-                  <li>
-                    <a href="TimeLine">
-                      <span>TimeLine</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Login">
-                      <span>Login</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Register">
-                      <span>Register</span>
-                    </a>
-                  </li>
-                </ul>
-              </DivSumenu>
-            </LiItem>
-            <LiItem
-              isOpen={components}
-              onClick={() => setComponents(!components)}
-            >
-              <a href="#">
-                Components
-                <img src={seta} alt="seta-branca" />
-              </a>
+            {menu &&
+              menu.menus.map(item => (
+                <LiItem
+                  key={item.id}
+                  isOpen={itensMenu[item.id].drop}
+                  onClick={() =>
+                    setItensMenu(
+                      itensMenu.map(arrayItem =>
+                        arrayItem.id === item.id
+                          ? { ...arrayItem, drop: !arrayItem.drop }
+                          : arrayItem,
+                      ),
+                    )
+                  }
+                >
+                  <a href="#">
+                    {item.name}
+                    <img src={seta} alt="seta-branca" />
+                  </a>
 
-              <DivSumenu>
-                <ul>
-                  <li>
-                    <a href="Button">
-                      <span>Button</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Input">
-                      <span>Input</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Grid">
-                      <span>Grid</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Notification">
-                      <span>Notification</span>
-                    </a>
-                  </li>
-                </ul>
-              </DivSumenu>
-            </LiItem>
-            <LiItem isOpen={forms} onClick={() => setForms(!forms)}>
-              <a href="#">
-                Forms
-                <img src={seta} alt="seta-branca" />
-              </a>
-              <DivSumenu>
-                <ul>
-                  <li>
-                    <a href="Regular Forms">
-                      <span>Regular Forms</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Extended Forms">
-                      <span>Extended Forms</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Validation Forms">
-                      <span>Validation Forms</span>
-                    </a>
-                  </li>
-                </ul>
-              </DivSumenu>
-            </LiItem>
-            <LiItem isOpen={tables} onClick={() => setTables(!tables)}>
-              <a href="#">
-                Tables
-                <img src={seta} alt="seta-branca" />
-              </a>
-              <DivSumenu>
-                <ul>
-                  <li>
-                    <a href="Regular Tables">
-                      <span>Regular Tables</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Extended Tables">
-                      <span>Extended Tables</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="React Tables">
-                      <span>React Tables</span>
-                    </a>
-                  </li>
-                </ul>
-              </DivSumenu>
-            </LiItem>
-            <LiItem isOpen={maps} onClick={() => setMaps(!maps)}>
-              <a href="#">
-                Maps
-                <img src={seta} alt="seta-branca" />
-              </a>
-              <DivSumenu>
-                <ul>
-                  <li>
-                    <a href="Google Maps">
-                      <span>Google Maps</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Full Screen Maps">
-                      <span>Full Screen Maps</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="Vector Maps">
-                      <span>Vector Maps</span>
-                    </a>
-                  </li>
-                </ul>
-              </DivSumenu>
-            </LiItem>
+                  <DivSumenu>
+                    <ul>
+                      {submenu &&
+                        submenu.submenus.map(itemSubmenu => {
+                          if (itemSubmenu.fk === item.id) {
+                            return (
+                              <LiSubmenu key={itemSubmenu.id}>
+                                <a href="TimeLine">
+                                  <span>{itemSubmenu.name}</span>
+                                </a>
+                              </LiSubmenu>
+                            );
+                          }
+                          return null;
+                        })}
+                    </ul>
+                  </DivSumenu>
+                </LiItem>
+              ))}
           </SidebarNav>
         </Wrapper>
       </Sidebar>

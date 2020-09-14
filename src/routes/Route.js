@@ -6,8 +6,6 @@ import { useAuth } from '../hooks/auth';
 const Route = ({ isPrivate = false, component: Component, ...rest }) => {
   const { user } = useAuth();
 
-  console.log(user, isPrivate);
-
   return (
     <RoutesDOM
       {...rest}
