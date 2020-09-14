@@ -109,7 +109,7 @@ const Dashboard = () => {
                     <ul>
                       {submenu &&
                         submenu.submenus.map(itemSubmenu => {
-                          if (itemSubmenu.fk === item.id) {
+                          if (itemSubmenu.menu_id === item.id) {
                             return (
                               <LiSubmenu key={itemSubmenu.id}>
                                 <a href="TimeLine">

@@ -3,57 +3,57 @@
   [
     {
       "id": 1,
-      "fk": 1,
+      "menu_id": 1,
       "name": "Carrinhos"
     },
     {
       "id": 2,
-      "fk": 1,
+      "menu_id": 1,
       "name": "Bonecas"
     },
     {
       "id": 3,
-      "fk": 1,
+      "menu_id": 1,
       "name": "Amoeba"
     },
     {
       "id": 4,
-      "fk": 2,
+      "menu_id": 2,
       "name": "Video-Game"
     },
     {
       "id": 5,
-      "fk": 2,
+      "menu_id": 2,
       "name": "Notebook"
     },
     {
       "id": 6,
-      "fk": 2,
+      "menu_id": 2,
       "name": "Ipad"
     },
     {
       "id": 7,
-      "fk": 3,
+      "menu_id": 3,
       "name": "Batedeira"
     },
     {
       "id": 8,
-      "fk": 3,
+      "menu_id": 3,
       "name": "Aspirador"
     },
     {
       "id": 9,
-      "fk": 4,
+      "menu_id": 4,
       "name": "Sofá"
     },
     {
       "id": 10,
-      "fk": 4,
+      "menu_id": 4,
       "name": "Mesa"
     },
     {
       "id": 11,
-      "fk": 4,
+      "menu_id": 4,
       "name": "TV"
     }
   ]

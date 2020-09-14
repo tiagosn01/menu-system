@@ -28,7 +28,7 @@ const SignIn = () => {
       try {
         const schema = Yup.object().shape({
           email: Yup.string().required('Campo obrigatório'),
-          name: Yup.string().required('Senha obrigatória.'),
+          name: Yup.string().required('Nome obrigatória.'),
         });
 
         await schema.validate(data, {
@@ -44,8 +44,6 @@ const SignIn = () => {
       } catch (err) {
         console.log(err);
         if (err) {
-          // mostrar erros para usuário(ainda falta fazer)
-
           window.alert('Erro no login');
 
           return;
@@ -58,7 +56,7 @@ const SignIn = () => {
 
   return (
     <Container>
-      <Title>NextLogo</Title>
+      <Title>MenuSystem</Title>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Acesso ao sistema</h1>
