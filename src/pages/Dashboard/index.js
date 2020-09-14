@@ -68,13 +68,13 @@ const Dashboard = () => {
             <DivSubmenuUser>
               <ul>
                 <li>
-                  <a href="My Profile">My Profile</a>
+                  <a href="My Profile">Meu Perfil</a>
                 </li>
                 <li>
-                  <a href="Edit Profile">Edit Profile</a>
+                  <a href="Edit Profile">Editar Perfil</a>
                 </li>
                 <li>
-                  <a href="Settings">Settings</a>
+                  <a href="Settings">Configurações</a>
                 </li>
               </ul>
             </DivSubmenuUser>
