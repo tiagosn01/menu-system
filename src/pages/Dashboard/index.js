@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAuth } from '../../hooks/auth';
+
+import api from '../../services/api';
 
 import seta from '../../assets/seta.png';
 import menu from '../../api/opcoes-menu.json';
@@ -25,6 +27,8 @@ import {
 const Dashboard = () => {
   const { signOut } = useAuth();
   const [menuUser, setMenuUser] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [alreadyUpMenu, setAlreadyUpMenu] = useState([0, 65]);
   const [itensMenu, setItensMenu] = useState([
     { id: 0, drop: false },
     { id: 1, drop: false },
@@ -34,7 +38,15 @@ const Dashboard = () => {
     { id: 5, drop: false },
     { id: 6, drop: false },
     { id: 7, drop: false },
+    { id: 8, drop: false },
+    { id: 9, drop: false },
   ]);
+
+  useEffect(() => {
+    api.get('permissions').then(response => {
+      setOptions(response.data);
+    });
+  }, []);
 
   return (
     <Container>
@@ -85,45 +97,56 @@ const Dashboard = () => {
               <a href="/dashboard">Dashboard</a>
             </li>
 
-            {menu &&
-              menu.menus.map(item => (
-                <LiItem
-                  key={item.id}
-                  isOpen={itensMenu[item.id].drop}
-                  onClick={() =>
-                    setItensMenu(
-                      itensMenu.map(arrayItem =>
-                        arrayItem.id === item.id
-                          ? { ...arrayItem, drop: !arrayItem.drop }
-                          : arrayItem,
-                      ),
-                    )
-                  }
-                >
-                  <a href="#">
-                    {item.name}
-                    <img src={seta} alt="seta-branca" />
-                  </a>
+            {options &&
+              options.map(item => {
+                if (alreadyUpMenu.indexOf(item.menu_id) <= 0) {
+                  setAlreadyUpMenu([...alreadyUpMenu, item.menu_id]);
+                  console.log(alreadyUpMenu);
 
-                  <DivSumenu>
-                    <ul>
-                      {submenu &&
-                        submenu.submenus.map(itemSubmenu => {
-                          if (itemSubmenu.menu_id === item.id) {
-                            return (
-                              <LiSubmenu key={itemSubmenu.id}>
-                                <a href="TimeLine">
-                                  <span>{itemSubmenu.name}</span>
-                                </a>
-                              </LiSubmenu>
-                            );
-                          }
-                          return null;
-                        })}
-                    </ul>
-                  </DivSumenu>
-                </LiItem>
-              ))}
+                  return (
+                    <LiItem
+                      key={item.id}
+                      isOpen={itensMenu[item.menu_id].drop}
+                      onClick={() =>
+                        setItensMenu(
+                          itensMenu.map(arrayItem =>
+                            arrayItem.id === item.menu_id
+                              ? { ...arrayItem, drop: !arrayItem.drop }
+                              : arrayItem,
+                          ),
+                        )
+                      }
+                    >
+                      <a href="#">
+                        {item.menu.name}
+                        <img src={seta} alt="seta-branca" />
+                      </a>
+
+                      <DivSumenu>
+                        <ul>
+                          {options &&
+                            options.map(itemSubmenu => {
+                              if (
+                                itemSubmenu.submenu.menu_id === item.menu_id
+                              ) {
+                                return (
+                                  <LiSubmenu key={itemSubmenu.id}>
+                                    <a href="TimeLine">
+                                      <span>{itemSubmenu.submenu.name}</span>
+                                    </a>
+                                  </LiSubmenu>
+                                );
+                              }
+                              return null;
+                            })}
+                        </ul>
+                      </DivSumenu>
+                    </LiItem>
+                  );
+                }
+
+                return null;
+              })}
           </SidebarNav>
         </Wrapper>
       </Sidebar>
